@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1=title 
+  p  Um ein Gebirge löschen zu können, müssen Sie zuerste ein Gebirge auswählen und anschließen unten auf Löschen klicken.
+  br
+  br
+  #map
+  br
+  .row.justify-content-md-center
+    .col-lg-6.col-xs-12.mb-3
+        .card.text-dark.p-4.border-success.card
+            form(action='/delete/update' method='post')
+              fieldset
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='id') ID
+                  .col-sm-12
+                    input#id.form-control(type='text' name="id" readonly)
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='mountain') Name          
+                  .col-sm-12
+                    input#mountain.form-control(type='text' name="mountain" placeholder="Name des Gebirge")
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='altitude') Höhe
+                  .col-sm-12
+                    input#altitude.form-control(type='text' name="altitude" placeholder="Höhe des Gebirge")
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='long') Längengrad
+                  .col-sm-12
+                    input#long.form-control(type='text' name="long" placeholder="X Koordinate des Gebirge")
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='lat') Breitengrad
+                  .col-sm-12
+                    input#lat.form-control(type='text' name="lat" placeholder="Y Koordinate des Gebirge")
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='url') Wikipedialink
+                  .col-sm-12
+                    input#url.form-control(type='text' name="url" placeholder="Link zum Wikipediaartikel")
+                .form-group.row
+                  label.col-sm-1.col-form-label(for='beschreibung') Beschreibung
+                  .col-sm-12
+                    input#beschreibung.form-control(type='text' name="beschreibung" readonly)
+                    br
+                button.btn.btn-success(type='submit' formaction="/delete/deleteOne") Löschen
+
+  script.
+    let geojson = !{JSON.stringify(data)}
+
+  block scripts 
+    script(src="/javascripts/deleteMountain.js")

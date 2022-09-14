@@ -1,0 +1,63 @@
+@media (max-width: 970px) {
+  body {
+    padding: 10px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: #00b7ff9f;
+  }
+  
+  #map {
+    height: 400px;
+    width: 80%;
+  }
+
+  #mapRoute {
+    height: 400px;
+    width: 80%;
+  }
+}
+
+@media (min-width: 970px) {
+  body {
+    padding: 50px;
+    font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+  
+  #map {
+    height: 600px;
+    width: 80%;
+  }
+
+  #mapRoute {
+    height: 600px;
+    width: 80%;
+  }
+
+  #navbar-header{
+    float: left;
+  }
+}
+
+.navbar{
+  background-color: rgb(144, 199, 241);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.nav-item{
+  padding-top: 15px;
+  padding-left: 15px;
+  list-style-type: none;
+}
+
+
+#textinput  {
+  height: 300px;
+  width: 200px;
+}

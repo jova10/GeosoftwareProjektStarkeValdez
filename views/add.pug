@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  h1 Gebirge hinzufügen
+  p Auf dieser Seite ist es möglich Gebirge entweder durch leaflet draw, oder im GeoJSON Format als Datei oder Text zur Datenbank hinzugefügt werden, dies kann zusätzlich durch einen Wikipedia Link ergänzt werden um so eine Beschreibung des Gebirges zu bekommen.
+  br
+  br
+  h3 Marker auf Karte für Standort setzen:
+  #map
+  br
+  br
+  h3 Leere Felder mit name, Höhe und Wikipedialink ausfüllen:
+  .row.justify-content-md-center
+    .col-lg-6.col-xs-12.mb-3.justify-content-md-center 
+        .card.text-dark.p-4.border-primary.card
+            form(action='/add/mapmarker' method='post')
+                fieldset
+                  .form-group.row
+                    label.col-sm-1.col-form-label(for='mountain') Name          
+                    .col-sm-12
+                      input#name.form-control(type='text' name="mountain" placeholder="Name des Gebirge")
+                  .form-group.row
+                    label.col-sm-1.col-form-label(for='altitude') Höhe
+                    .col-sm-12
+                      input#altitude.form-control(type='text' name="altitude" placeholder="Höhe des Gebirge")
+                  .form-group.row
+                    label.col-sm-1.col-form-label(for='long') Längengrad
+                    .col-sm-12
+                      input#long.form-control(type='text' name="long" placeholder="X Koordinate des Gebirge")
+                  .form-group.row
+                    label.col-sm-1.col-form-label(for='lat') Breitengrad
+                    .col-sm-12
+                      input#lat.form-control(type='text' name="lat" placeholder="Y Koordinate des Gebirge")
+                  .form-group.row
+                    label.col-sm-1.col-form-label(for='url') Wikipedialink
+                    .col-sm-12
+                      input#url.form-control(type='text' name="url" placeholder="Link zum Wikipediaartikel")
+                      br
+                  button.btn.btn-secondary(type='submit') Speichern              
+  form(action='/add/textinput' method='post')
+    textarea.form-control(type='textarea' name="textinput" placeholder='Nur Features, keine Featurecollections!:\n  {\n    "type": "Feature",\n    "properties": {\n      "name": "Name",\n      "altitude": Höhe,\n      "url": "https://de.wikipedia.org/...",\n      ("description": " ")\n},\n    "geometry": {\n      "type": "Point",\n      "coordinates": [long, lat]\n    }\n}')#textinput
+    button.btn.btn-secondary(type='submit') Speichern
+  h3 Hier kann eine Datei im GeoJSON Format hochgeladen werden.
+  br
+  br
+  input#upload(type='file')
+  br  
+  
+  script(src="/javascripts/add_mountain.js")
